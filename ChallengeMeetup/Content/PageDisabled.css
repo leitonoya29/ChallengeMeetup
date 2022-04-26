@@ -1,0 +1,47 @@
+﻿body {
+    background-color: #f4f4f4
+}
+
+#iconPage {
+    color: red;
+    padding-right: 25px;
+    font-size: 48px;
+}
+
+#textPage {
+    font-size: 48px
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+}
+/*Escenario 1. Height bajo. Debo achicar los cuadrados y reducir el margin top*/
+@media (max-width: 600px) {
+    #iconPage {
+        font-size: 24px
+    }
+
+    #textPage {
+        font-size: 24px
+    }
+
+    .inner {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}

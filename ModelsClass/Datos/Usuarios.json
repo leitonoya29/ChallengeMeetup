@@ -1,0 +1,72 @@
+[
+  {
+    "UserID": 1,
+    "UserName": "leandro",
+    "Password": "10e9f239e3523081b76c3b71e26bf1c29d8d6e5dc11583a0bba534bf8cbc338a",
+    "AdminUser": false,
+    "PerID": 1
+  },
+  {
+    "UserID": 2,
+    "UserName": "santander",
+    "Password": "138df632fd0de2067dfcd75b6dbc543d8d66da31a79a39358216aa6ef63ad437",
+    "AdminUser": true,
+    "PerID": 2
+  },
+  {
+    "UserID": 3,
+    "UserName": "ortega",
+    "Password": "2ffeb435f5747da699a36b82c3809e597ce8286ed44376daba341988211fe162",
+    "AdminUser": false,
+    "PerID": 3
+  },
+  {
+    "UserID": 4,
+    "UserName": "aimar",
+    "Password": "fee43a57fd24bdf32471c711bf465495f5ebf20ecb5cf5e57c9f79227d2979d9",
+    "AdminUser": false,
+    "PerID": 4
+  },
+  {
+    "UserID": 5,
+    "UserName": "saviola",
+    "Password": "b5d97d86b018c59b3e55451ff50ab70699eb379b465438629301e58935eb6e3b",
+    "AdminUser": false,
+    "PerID": 5
+  },
+  {
+    "UserID": 6,
+    "UserName": "maradona",
+    "Password": "9ea0e6c6f5b4cad6e53059c46cc14ef2b56097957fa589eca3f4cf3b25b3defc",
+    "AdminUser": false,
+    "PerID": 6
+  },
+  {
+    "UserID": 7,
+    "UserName": "messi",
+    "Password": "9bcdae8ebc2a970a365103a52da830f3958f4f381fcfd544f7c0452ee09dba00",
+    "AdminUser": false,
+    "PerID": 7
+  },
+  {
+    "UserID": 8,
+    "UserName": "alvarez",
+    "Password": "18d73b091ae88f2bb581b97a8d5119fbc3e5ef0f184d87507fba08dcf32a6dc0",
+    "AdminUser": false,
+    "PerID": 8
+  },
+  {
+    "UserID": 9,
+    "UserName": "cavenaghi",
+    "Password": "3ea563223c3d16f9298c98792cceccaaa4b42182bf8c86a04348a190fc47ea6d",
+    "AdminUser": false,
+    "PerID": 9
+  },
+  {
+    "UserID": 10,
+    "UserName": "martinez",
+    "Password": "db044f19bc0137185286345ccf1f067d2d9ce1c8efb38349b2479696850db69f",
+    "AdminUser": false,
+    "PerID": 10
+  }
+]

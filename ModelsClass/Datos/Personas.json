@@ -1,0 +1,64 @@
+{
+  "personas": [
+    {
+      "PerID": 1,
+      "PerNombres": "Leandro Raul",
+      "PerApellido": "Noya",
+      "PerMail": "leandro.noya@icloud.com"
+    },
+    {
+      "PerID": 2,
+      "PerNombres": "Marcelo",
+      "PerApellido": "Gallardo",
+      "PerMail": "marcelo.gallardo@icloud.com"
+    },
+    {
+      "PerID": 3,
+      "PerNombres": "Ariel",
+      "PerApellido": "Ortega",
+      "PerMail": "ariel.ortega@icloud.com"
+    },
+    {
+      "PerID": 4,
+      "PerNombres": "Pablo",
+      "PerApellido": "Aimar",
+      "PerMail": "pablo.aimar@icloud.com"
+    },
+    {
+      "PerID": 5,
+      "PerNombres": "Javier",
+      "PerApellido": "Saviola",
+      "PerMail": "javier.saviola@icloud.com"
+    },
+    {
+      "PerID": 6,
+      "PerNombres": "Diego",
+      "PerApellido": "Maradona",
+      "PerMail": "diego.maradona@icloud.com"
+    },
+    {
+      "PerID": 7,
+      "PerNombres": "Lionel",
+      "PerApellido": "Messi",
+      "PerMail": "lionel.messi@icloud.com"
+    },
+    {
+      "PerID": 8,
+      "PerNombres": "Julian",
+      "PerApellido": "Alvarez",
+      "PerMail": "julian.alvarez@icloud.com"
+    },
+    {
+      "PerID": 9,
+      "PerNombres": "Fernando",
+      "PerApellido": "Cavenaghi",
+      "PerMail": "fernando.cavenaghi@icloud.com"
+    },
+    {
+      "PerID": 10,
+      "PerNombres": "Gonzalo",
+      "PerApellido": "Martinez",
+      "PerMail": "gonzalo.martinez@icloud.com"
+    }
+  ]
+}
