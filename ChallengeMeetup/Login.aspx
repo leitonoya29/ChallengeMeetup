@@ -2,11 +2,15 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="es">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+     <meta name="apple-mobile-web-app-status-bar" content="#fe0000" />
+    <meta name="theme-color" content="##ffffff" />
 
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="/Images/iconSantander_96x96.png" />
     <title>Login</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
@@ -16,13 +20,15 @@
     <form id="form1" runat="server">
         <div>
             <div class="container-ln-bg">
-                <div class="wrap-login100" style="background-image: url('Images/santanderFondo.jpg');">
-                    <img src="Images/SantanderEnc.png" class="img-enc" />
-                    <span class="login100-form-logo">
+                <div class="wrap-login100" style="background:  #fe0000;">
+                    <div class="text-center pb-2">
+                    <img src="Images/SantanderEnc.png" class="img-enc pb-5" />
+                         <span class="login100-form-logo">
                         <img src="Images/iconSantander.jpg" class="loginImage" />
                     </span>
                     <span class="login100-form-title">¡Bienvenido!
                     </span>
+                    </div>                   
                     <div id="divUser" class="input-ln validate-input" data-validate="Ingrese el nombre de usuario">
                         <input class="input100" type="text" id="uiUserName" runat="server" name="username" placeholder="Usuario" autocomplete="off" />
                         <span class="focus-input100 user"></span>

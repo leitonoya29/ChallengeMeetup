@@ -18,17 +18,14 @@ namespace LNApis.Controllers
         {
             List<Dictionary<string, object>> lTiempo = new List<Dictionary<string, object>>();
 
-            string token = Request.Headers["X-LNApi-Token"];
-            if (_genClass.ValidToken(token))
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
 
                 var _repositories = new GenericRepositories();
+                Dictionary<string, object> dicKeys = _repositories.GetKeys();
 
                 try
                 {
-
-                    Dictionary<string, object> dicKeys = _repositories.GetKeys();
-
                     var client1 = new HttpClient();
                     var request1 = new HttpRequestMessage
                     {
@@ -40,11 +37,13 @@ namespace LNApis.Controllers
                         { "X-RapidAPI-Key", dicKeys["X-RapidAPI-Key"].ToString() },
                    },
                     };
+
                     using (var response = await client1.SendAsync(request1))
                     {
                         response.EnsureSuccessStatusCode();
                         var body = await response.Content.ReadAsStringAsync();
                         var json = JObject.Parse(body)["data"];
+                       
                         foreach (var item in json)
                         {
                             if (!fecha.HasValue || fecha.Value.Date == ((DateTime)item["datetime"]).Date)
@@ -59,8 +58,6 @@ namespace LNApis.Controllers
                                 lTiempo.Add(dic);
                             }
                         }
-
-
                     }
 
                     Response.StatusCode = (int)HttpStatusCode.OK;
@@ -68,7 +65,6 @@ namespace LNApis.Controllers
                 catch (Exception ex)
                 {
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
                 }
             }
             else

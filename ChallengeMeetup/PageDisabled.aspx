@@ -2,9 +2,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="es">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
     <title>Pagina deshabilitada</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
@@ -12,7 +13,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
         <div class="container">
             <div class="outer">
                 <div class="middle">
@@ -20,8 +20,7 @@
                         <i id="iconPage" class='fa fa-exclamation-triangle'></i><span id="textPage"><p>No puede acceder a la pagina por politicas de seguridad.</p><p> Por favor contacte al administrador. </p></span>
                     </div>
                 </div>
-            </div>
-            
+            </div>            
             <script src="Scripts/jquery-3.4.1.min.js"></script>
             <script src="Scripts/umd/popper.min.js"></script>
             <script src="Scripts/bootstrap.min.js"></script>

@@ -15,11 +15,11 @@ namespace LNApis.Controllers
         [HttpPost]
         public bool Post(Dictionary<string, int> _dic)
         {
-            string token = Request.Headers["X-LNApi-Token"];
             int _perID = 0;
             int _meetID = 0;
             var ret = false;
-            if (token != null && _genClass.ValidToken(token))
+
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
 
                 if (_dic != null && _dic.ContainsKey("PerID") && _dic.ContainsKey("MeetID") && _dic["PerID"] > 0 && _dic["MeetID"] > 0)
@@ -28,6 +28,7 @@ namespace LNApis.Controllers
                     _meetID = _dic["MeetID"];
 
                     ret = _userRepository.RegisterUserMeet(_perID, _meetID);
+
                     if (ret)
                     {
                         Response.StatusCode = (int)HttpStatusCode.Created;

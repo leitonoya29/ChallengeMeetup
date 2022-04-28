@@ -10,10 +10,12 @@ namespace LNApis
     {
 
         private readonly GenericRepositories _userRepository = new GenericRepositories();
+
         public bool ValidToken(string t)
         {
             bool Auth = false;
             Criptografia _cripto = new Criptografia();
+
             try
             {
 
@@ -29,22 +31,36 @@ namespace LNApis
 
             return Auth;
         }
+
+        public List<string> GetListaMailsUsuarios()
+        {
+            List<string> _mails = new List<string>();
+            var _repositories = new GenericRepositories();
+            List<Persona> _lPer = _repositories.GetPersonas();
+
+            foreach (Persona p in _lPer)
+            {
+                _mails.Add(p.PerMail);
+            }
+
+            return _mails;
+        }
+
         public void SendMails(List<string> _mails, string subject, string body)
         {
+            var _repositories = new GenericRepositories();
+            Dictionary<string, object> dicKeys = _repositories.GetKeys();
+
             try
             {
-                var _repositories = new GenericRepositories();
-                Dictionary<string, object> dicKeys = _repositories.GetKeys();
+                var message = new MailMessage();
+                var emailClient = new SmtpClient();
 
-                var message = new System.Net.Mail.MailMessage();
-                var emailClient = new System.Net.Mail.SmtpClient();
-
-                // Detalle del mail
                 foreach (var elem in _mails)
                 {
                     if (elem.ToString().IndexOf("@") > 0)
                     {
-                        message.To.Add(new System.Net.Mail.MailAddress(elem));
+                        message.To.Add(new MailAddress(elem));
                     }
                 }
 
@@ -53,18 +69,17 @@ namespace LNApis
                 message.Subject = subject;
                 message.Body = body;
                 message.IsBodyHtml = true;
-                message.Priority = System.Net.Mail.MailPriority.High;
+                message.Priority = MailPriority.High;
 
-                // Detalle del servidor
                 emailClient.Host = dicKeys["Servidor"].ToString();
                 emailClient.Port = int.Parse(dicKeys["Puerto"].ToString());
                 emailClient.Timeout = 120000;
                 emailClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 emailClient.EnableSsl = bool.Parse(dicKeys["SSL"].ToString().ToLower());
                 emailClient.UseDefaultCredentials = bool.Parse(dicKeys["autenticacion"].ToString().ToLower());
-                var SMTPUserInfo = new System.Net.NetworkCredential(dicKeys["User"].ToString(), dicKeys["Pass"].ToString());
-                emailClient.Credentials = SMTPUserInfo;
+                emailClient.Credentials = new System.Net.NetworkCredential(dicKeys["User"].ToString(), dicKeys["Pass"].ToString());
                 emailClient.Send(message);
+
                 emailClient.Dispose();
                 message.Dispose();
             }
@@ -72,24 +87,6 @@ namespace LNApis
             {
 
             }
-
-        }
-
-        public List<string> GetListaMailsUsuarios()
-        {
-            List<string> _mails = new List<string>();
-            var _repositories = new GenericRepositories();
-            List<Persona> _lPer = _repositories.GetPersonas();
-
-            foreach(Persona p in _lPer)
-            {
-                _mails.Add(p.PerMail);
-
-            }
-
-            return _mails;
         }
     }
-
-
 }

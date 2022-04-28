@@ -15,20 +15,22 @@ public partial class Login : System.Web.UI.Page
     private async Task GetUsuario()
     {
        
-        Criptografia _cripto = new Criptografia();
-       
+        Criptografia _cripto = new Criptografia();       
         string usuario = uiUserName.Value;
         string password = uiUserPassword.Value;
-        string pathServicio = Path.Combine(ConfigurationManager.AppSettings.Get("APIs"), "api/Login?usuario=" + usuario + "&password=" + password);
+        string pathServicio = "";
 
+        if (ConfigurationManager.AppSettings.Get("APIs") != null) { 
         try
         {
+            pathServicio = Path.Combine(ConfigurationManager.AppSettings.Get("APIs"), "api/Login?usuario=" + usuario + "&password=" + password);
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(pathServicio),
             };
+           
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();
@@ -60,6 +62,13 @@ public partial class Login : System.Web.UI.Page
             _userOk = false;
             ModalError.Style["display"] = "block";
             divmensaje.InnerHtml = "Error de credenciales, el usuario o contraseña es invalido.";
+        }
+        }
+        else
+        {
+            _userOk = false;
+            ModalError.Style["display"] = "block";
+            divmensaje.InnerHtml = "Falta configurar los servicios web.";
         }
     }
     protected void Page_Load(object sender, EventArgs e)

@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "Santander Tecnologia",
+  "short_name": "Santander Meetups",
+  "theme_color": "#fe0000",
+  "background_color": "#fe0000",
+  "display": "standalone",
+  "orientation": "portrait",
+  "Scope": "/Login.aspx",
+  "start_url": ".",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/Images/iconSantander_72x72.jpg",
+      "type": "image/jpg",
+      "sizes": "72x72"
+    },
+    {
+      "src": "/Images/iconSantander_96x96.jpg",
+      "type": "image/jpg",
+      "sizes": "96x96"
+    },
+    {
+      "src": "/Images/iconSantander_128x128.jpg",
+      "type": "image/jpg",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/Images/iconSantander_144x144.jpg",
+      "type": "image/jpg",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/Images/iconSantander_152x152.jpg",
+      "type": "image/jpg",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/Images/iconSantander_192x192.jpg",
+      "type": "image/jpg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/Images/iconSantander_384x384.jpg",
+      "type": "image/jpg",
+      "sizes": "384x384"
+    },
+    {
+      "src": "/Images/iconSantander_512x512.jpg",
+      "type": "image/jpg",
+      "sizes": "512x512"
+    }
+  ]
+
+}

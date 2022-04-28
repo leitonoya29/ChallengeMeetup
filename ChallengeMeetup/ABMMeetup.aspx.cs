@@ -20,6 +20,7 @@ public partial class ABMMeetup : LNPage
         ret = (uiDireccion.Value == "" ? false : ret);
         ret = (uiLatitud.Value == "" ? false : ret);
         ret = (uiLongitud.Value == "" ? false : ret);
+
         try
         {
             var lat = float.Parse(uiLongitud.Value.Replace(".", ","));
@@ -51,7 +52,6 @@ public partial class ABMMeetup : LNPage
         {
             DivModal.InnerHtml = _modal.GetModal(2, "Revise los campos del formulario.");
         }
-
 
         return ret;
     }
@@ -96,9 +96,13 @@ public partial class ABMMeetup : LNPage
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (IsPostBack && Request.Params.Get("__EVENTTARGET") == "Grabar")
+        if (IsPostBack && Request.Params.Get("__EVENTTARGET") == "Grabar" && ConfigurationManager.AppSettings.Get("APIs") != null)
         {
             SaveMeetAsync();
+        }
+        else
+        {
+            DivModal.InnerHtml = _modal.GetModal(2, "Falta configurar los servicios web.");
         }
 
     }

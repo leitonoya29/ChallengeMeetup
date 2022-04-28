@@ -421,7 +421,10 @@ iframe {
 
 @media(max-height:750px) {
     .wrap-login100 {
-        padding: 30px 15px 15px !important
+        padding: 35px 15px 37px !important
+    }
+    .wrap-login100 {
+        width: inherit;
     }
 
     .login100-form-title {
@@ -429,7 +432,7 @@ iframe {
     }
 
     .img-enc {
-        width: 250px;
+        width: 345px;
     }
 }
 

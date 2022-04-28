@@ -19,15 +19,16 @@ namespace LNApis.Controllers
         {
             List<Persona> lPer = null;
 
-            string token = Request.Headers["X-LNApi-Token"];
-
-            if (_genClass.ValidToken(token))
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
-                try { 
-                _userRepository.GetPersonas();
+                try
+                {
+                    _userRepository.GetPersonas();
+
                     Response.StatusCode = (int)HttpStatusCode.OK;
                 }
-                catch(Exception ex) {
+                catch (Exception ex)
+                {
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 }
             }
@@ -35,9 +36,8 @@ namespace LNApis.Controllers
             {
                 Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             }
+
             return JsonConvert.SerializeObject(lPer);
         }
-
-
     }
 }

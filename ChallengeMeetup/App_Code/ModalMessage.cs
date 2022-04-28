@@ -25,7 +25,6 @@ public class ModalMessage
                 color = "green";
                 break;
             case 2:
-
                 cls = "danger";
                 icon = "<span class='fa fa-lg fa-exclamation-circle' style='color: #ff0017; padding-right: 10px; padding-top: 7px;'></span>";
                 title = "ERROR";
@@ -44,9 +43,6 @@ public class ModalMessage
                 color = "orange";
                 break;
         }
-
-
-
 
         ret += "<div id='ModalAlert' class='modal' tabindex='-1' role='dialog' aria-labelledby='ModalAlert' aria-hidden='true' style='display:block;background-color: #0000008f;'  clientidmode='Static' >";
         ret += "<div class='modal-dialog' role='document'>";
@@ -67,8 +63,6 @@ public class ModalMessage
         ret += "    </div>";
         ret += "   </div>";
         ret += "   </div>";
-
-
 
         return ret;
     }

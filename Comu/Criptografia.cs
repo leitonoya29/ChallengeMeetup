@@ -18,6 +18,7 @@ namespace Comu
             byte[] stream = null;
             StringBuilder sb = new StringBuilder();
             stream = sha256.ComputeHash(encoding.GetBytes(str));
+       
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
 
             return sb.ToString();
@@ -41,7 +42,6 @@ namespace Comu
             }
             catch (Exception ex)
             {
-
             }
 
             return ciphertext;
@@ -54,6 +54,7 @@ namespace Comu
             string strResult = "";
             string iv = "";
             string ciphertext = str.Replace(" ", "+");
+         
             try
             {
                 var ivct = ciphertext.Split(new[] { "==" }, StringSplitOptions.None);
@@ -68,7 +69,6 @@ namespace Comu
             }
             catch (Exception ex)
             {
-
             }
 
             return strResult;

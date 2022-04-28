@@ -43,7 +43,6 @@ namespace LNApis.Controllers
                 oLgn.Add("mensaje", "Credenciales incorrectas");
                 oLgn.Add("token", "");
 
-
                 Response.StatusCode = (int)HttpStatusCode.Unauthorized;
             }
 

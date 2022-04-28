@@ -19,49 +19,50 @@
         }
         else {
             $("#uiTitulo").removeClass('is-invalid');
-
         }
+
         if ($("#uiFecha").val() == "") {
             $("#uiFecha").addClass('is-invalid');
             ret = false;
-
         }
         else {
             $("#uiFecha").removeClass('is-invalid');
-
         }
+
         if ($("#uiHora").val() == "") {
             $("#uiHora").addClass('is-invalid');
             ret = false;
-
         }
         else {
             $("#uiHora").removeClass('is-invalid');
         }
+
         if ($("#uiDireccion").val() == "") {
             $("#uiDireccion").addClass('is-invalid');
             ret = false;
-
         }
+
         else {
             $("#uiDireccion").removeClass('is-invalid');
         }
+
         if (isNaN(parseFloat($("#uiLatitud").val().replace(",", ".")))) {
             $("#uiLatitud").addClass('is-invalid');
             ret = false;
-
         }
         else {
             $("#uiLatitud").removeClass('is-invalid');
         }
+
         if (isNaN(parseFloat($("#uiLongitud").val().replace(",", ".")))) {
             $("#uiLongitud").addClass('is-invalid');
-
         }
-        else {
 
+        else {
             $("#uiLongitud").removeClass('is-invalid');
         }
+
+
         if (ret) {
 
             __doPostBack("Grabar", "");
@@ -75,7 +76,6 @@
         todayHighlight: true,
         clearBtn: true
     });
-
 
     $(".datepicker").inputmask('99/99/9999');
     $('.time').inputmask('99:99');

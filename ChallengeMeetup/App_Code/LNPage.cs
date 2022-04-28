@@ -18,8 +18,7 @@ public class LNPage : System.Web.UI.Page
     }
 
     protected void Page_PreInit(object sender, EventArgs e)
-    {
-       
+    {       
             if (UserInfo.Instance.user == null || UserInfo.Instance.user.UserID == 0)
             {
                 Response.Redirect("~/Login.aspx");

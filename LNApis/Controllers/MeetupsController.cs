@@ -22,20 +22,18 @@ namespace LNApis.Controllers
         [HttpGet]
         public Meetup Get(int id)
         {
-            string token = Request.Headers["X-LNApi-Token"];
             Meetup _meet = null;
-            if (_genClass.ValidToken(token))
+
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
                 try
                 {
-
                     _meet = _userRepository.GetMeetup(id);
                     Response.StatusCode = (int)HttpStatusCode.OK;
                 }
                 catch (Exception ex)
                 {
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
                 }
             }
             else
@@ -51,19 +49,18 @@ namespace LNApis.Controllers
         public List<Meetup> Get()
         {
             List<Meetup> lMeet = null;
-            string token = Request.Headers["X-LNApi-Token"];
 
-            if (_genClass.ValidToken(token))
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
                 try
                 {
                     lMeet = _userRepository.GetMeetups();
+
                     Response.StatusCode = (int)HttpStatusCode.OK;
                 }
                 catch (Exception ex)
                 {
                     Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-
                 }
             }
             else
@@ -78,42 +75,36 @@ namespace LNApis.Controllers
         [HttpPost]
         public Meetup Post(Meetup _meet)
         {
-            string token = Request.Headers["X-LNApi-Token"];
 
-            if (_genClass.ValidToken(token))
+            if (Request.Headers.ContainsKey("X-LNApi-Token") && _genClass.ValidToken(Request.Headers["X-LNApi-Token"]))
             {
-                try
+
+                if (_meet == null)
                 {
-                    if (_meet == null)
+                    Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                }
+                else
+                {
+                    _meet = _userRepository.addMeetup(_meet);
+
+                    if (_meet != null)
                     {
-                        Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                        List<string> _lMails = _genClass.GetListaMailsUsuarios();
+
+                        if (_lMails.Count > 0)
+                        {
+                            string subject = "Nueva meetup " + _meet.MeetNombre + " el dia " + _meet.MeetFecha.ToString("dd/MM/yyyy") + " a las " + _meet.MeetFecha.ToString("HH:mm");
+                            string body = "No olvides registrarte a la nueva meetup " + _meet.MeetNombre + " el dia " + _meet.MeetFecha.ToString("dd/MM/yyyy") + " a las " + _meet.MeetFecha.ToString("HH:mm");
+
+                            _genClass.SendMails(_lMails, subject, body);
+                        }
+
+                        Response.StatusCode = (int)HttpStatusCode.Created;
                     }
                     else
                     {
-                        _meet = _userRepository.addMeetup(_meet);
-                        if (_meet != null)
-                        {
-                            try
-                            {
-
-                            string subject = "Nueva meetup " + _meet.MeetNombre + " el dia " + _meet.MeetFecha.ToString("dd/MM/yyyy") + " a las " + _meet.MeetFecha.ToString("HH:mm");
-                            string body = "No olvides registrarte a la nueva meetup " + _meet.MeetNombre + " el dia " + _meet.MeetFecha.ToString("dd/MM/yyyy") + " a las " + _meet.MeetFecha.ToString("HH:mm");
-                            List<string> _lMails = _genClass.GetListaMailsUsuarios();
-                            _genClass.SendMails(_lMails,subject,body);
-
-                            }
-                            catch (Exception ex)
-                            {
-
-                            }
-
-                            Response.StatusCode = (int)HttpStatusCode.Created;
-                        }
+                        Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                     }
-                }
-                catch (Exception)
-                {
-                    Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 }
             }
             else
@@ -123,5 +114,6 @@ namespace LNApis.Controllers
 
             return _meet;
         }
+
     }
 }
