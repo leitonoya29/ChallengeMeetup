@@ -27,6 +27,22 @@ namespace ModelsClass.Repos
             return lKeys[0];
         }
 
+        public List<string> GetValidKeys()
+        {
+            List<string> lKeys = new List<string>();
+            try
+            {
+                string jstring = File.ReadAllText(@"C:\Users\Leandro\source\repos\ChallengeMeetup\ModelsClass\Datos\ValidKeys.json");
+
+                lKeys = JsonConvert.DeserializeObject<List<string>>(JsonConvert.SerializeObject(JObject.Parse(jstring)["ValidKeys"]));
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return lKeys;
+        }
+
         public List<Usuario> GetUsuarios()
         {
             List<Usuario> _lUsers = new List<Usuario>();

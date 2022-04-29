@@ -55,6 +55,7 @@
     <None Include="Datos\Meetups.json" />
     <None Include="Datos\Personas.json" />
     <None Include="Datos\Usuarios.json" />
+    <None Include="Datos\ValidKeys.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -85,7 +85,7 @@ public partial class Meetups : LNPage
                 }
             }
         }
-        else
+        else if (!Finalizado && !registrado)
         {
             sb.AppendLine("<div id='divRegis_" + _meet.MeetID + "' name='divRegis_" + _meet.MeetID + "' runat='server' class='col-6'><input type='button' id='btnRegis_" + _meet.MeetID + "' name='btnRegis_" + _meet.MeetID + "' value='Resgistrarme' onclick='javascript:Registrar(" + _meet.MeetID + ");' class='btn btn-primary btnRegistrar' style='font-size: larger;' /> </div>");
         }
@@ -115,13 +115,13 @@ public partial class Meetups : LNPage
 
         }
 
-        if (PerID > 0 && MeetID > 0 && ConfigurationManager.AppSettings.Get("APIs") != null && ConfigurationManager.AppSettings.Get("APIs") != "")
+        if (PerID > 0 && MeetID > 0 && ConfigurationManager.AppSettings.Get("APIs") != null && ConfigurationManager.AppSettings.Get("APIsKey") != null)
         {
             url = Path.Combine(ConfigurationManager.AppSettings.Get("APIs"), "api/Register");
 
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("X-LNApi-Token", HttpContext.Current.Request.Cookies["LnT"].Value);
+                client.DefaultRequestHeaders.Add("X-LNApi-Token", ConfigurationManager.AppSettings.Get("APIsKey"));
                 var data = new Dictionary<string, int>();
                 data.Add("PerID", PerID);
                 data.Add("MeetID", MeetID);
@@ -167,7 +167,7 @@ public partial class Meetups : LNPage
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("X-LNApi-Token", HttpContext.Current.Request.Cookies["LnT"].Value);
+                client.DefaultRequestHeaders.Add("X-LNApi-Token", ConfigurationManager.AppSettings.Get("APIsKey"));
                 var data = new Dictionary<string, int>();
                 data.Add("PerID", PerID);
                 data.Add("MeetID", MeetID);
@@ -206,7 +206,7 @@ public partial class Meetups : LNPage
                 Method = HttpMethod.Get,
                 RequestUri = new Uri(pathServicio),
                 Headers = {
-                        { "X-LNApi-Token", HttpContext.Current.Request.Cookies["LnT"].Value },
+                        { "X-LNApi-Token", ConfigurationManager.AppSettings.Get("APIsKey") },
                        },
             };
 
@@ -231,7 +231,7 @@ public partial class Meetups : LNPage
                             Method = HttpMethod.Get,
                             RequestUri = new Uri(pathClima),
                             Headers = {
-                                               { "X-LNApi-Token", HttpContext.Current.Request.Cookies["LnT"].Value  },
+                                               { "X-LNApi-Token", ConfigurationManager.AppSettings.Get("APIsKey") },
                                        },
                         };
 
@@ -292,7 +292,6 @@ public partial class Meetups : LNPage
         {
             switch (Request.Params.Get("__EVENTTARGET"))
             {
-
                 case "Registrar":
                     await RegistraPersona();
                     ModalLoad.Style["display"] = "none";

@@ -2,6 +2,7 @@
   "Keys": [
     {
       "X-RapidAPI-Host": "weatherbit-v1-mashape.p.rapidapi.com",
+      "X-RapidAPI-Key": "9f391b2d3bmsh7bf42216251ee95p15c142jsnb10aad0f1121",
       "Cuenta": "Cuenta",
       "NombreCompleto": "NombreCompleto",
       "Servidor": "Servidor",
@@ -9,7 +10,7 @@
       "SSL": "SSL",
       "autenticacion": "autenticacion",
       "User": "User",
-      "Pass":"pass"
+      "Pass": "pass"
     }
   ]
 }

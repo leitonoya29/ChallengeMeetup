@@ -30,11 +30,11 @@
                     </span>
                     </div>                   
                     <div id="divUser" class="input-ln validate-input" data-validate="Ingrese el nombre de usuario">
-                        <input class="input100" type="text" id="uiUserName" runat="server" name="username" placeholder="Usuario" autocomplete="off" />
+                        <input class="input100" type="text" id="uiUserName" runat="server" name="username" placeholder="Usuario" autocomplete="new-password" />
                         <span class="focus-input100 user"></span>
                     </div>
                     <div id="divPassword" class="input-ln validate-input" data-validate="Ingrese la contraseña">
-                        <input class="input100" type="password" id="uiUserPassword" runat="server" name="pass" placeholder="Contraseña" autocomplete="off" />
+                        <input class="input100" type="password" id="uiUserPassword" runat="server" name="pass" placeholder="Contraseña" autocomplete="new-password" />
                         <span class="focus-input100 password"></span>
                     </div>
                     <div class="div-login-btn">

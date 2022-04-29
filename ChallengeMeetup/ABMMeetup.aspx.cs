@@ -59,7 +59,7 @@ public partial class ABMMeetup : LNPage
 
     private async void SaveMeetAsync()
     {
-        if (ValidaForm())
+        if (ValidaForm() && ConfigurationManager.AppSettings.Get("APIs") != null)
         {
             var url = Path.Combine(ConfigurationManager.AppSettings.Get("APIs"), "api/Meetups");
             Meetup _meet = new Meetup();
@@ -74,7 +74,7 @@ public partial class ABMMeetup : LNPage
 
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("X-LNApi-Token", HttpContext.Current.Request.Cookies["LnT"].Value);
+                client.DefaultRequestHeaders.Add("X-LNApi-Token", ConfigurationManager.AppSettings.Get("APIsKey"));
 
 
                 var res = await client.PostAsJsonAsync<Meetup>(url, _meet);
@@ -90,20 +90,21 @@ public partial class ABMMeetup : LNPage
             }
 
         }
+        else
+        {
+            DivModal.InnerHtml = _modal.GetModal(2, "Falta configurar los servicios web.");
+        }
 
     }
 
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (IsPostBack && Request.Params.Get("__EVENTTARGET") == "Grabar" && ConfigurationManager.AppSettings.Get("APIs") != null)
+        if (IsPostBack && Request.Params.Get("__EVENTTARGET") == "Grabar")
         {
             SaveMeetAsync();
         }
-        else
-        {
-            DivModal.InnerHtml = _modal.GetModal(2, "Falta configurar los servicios web.");
-        }
+
 
     }
 

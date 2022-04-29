@@ -18,10 +18,10 @@ namespace LNApis
 
             try
             {
+                var _lKeys = _userRepository.GetValidKeys();
 
-                var user = JsonConvert.DeserializeObject<Usuario>(_cripto.Decrypt(t));
 
-                Auth = _userRepository.Autorizado(user.UserName, _cripto.Decrypt(user.Password));
+                Auth = _lKeys.Contains(t);
 
             }
             catch (Exception ex)

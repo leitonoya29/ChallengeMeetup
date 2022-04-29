@@ -1,12 +1,5 @@
 ﻿$(document).ready(function () {
 
-    $("#uiUserPassword").on('keyup', function (e) {
-        if (e.keyCode == 13) {
-            alert("ok");
-            $("#btnLogin").trigger('click');
-        }
-    });
-
     $("#btnLogin").click(function () {
         var ret = true;
         var sms = "";
