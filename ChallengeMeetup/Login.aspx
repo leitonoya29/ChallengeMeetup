@@ -10,7 +10,7 @@
     <meta name="theme-color" content="##ffffff" />
 
     <link rel="manifest" href="manifest.json" />
-    <link rel="apple-touch-icon" href="/Images/iconSantander_96x96.png" />
+    <link rel="apple-touch-icon" href="/Images/iconSantander_144x144.png" />
     <title>Login</title>
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/font-awesome.min.css" rel="stylesheet" />
@@ -67,6 +67,13 @@
             <script src="Scripts/umd/popper.min.js"></script>
             <script src="Scripts/bootstrap.min.js"></script>
             <script src="Login.js"></script>
+             <script>
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker
+                        .register('./sw_pwa.js')
+                        .then(function () { console.log("Service Worker Registered"); });
+                }
+             </script>
         </div>
     </form>
 </body>
